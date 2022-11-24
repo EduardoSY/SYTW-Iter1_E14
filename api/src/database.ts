@@ -1,8 +1,18 @@
-import mongoose from 'mongoose'
-
+import mongoose, { ConnectOptions } from 'mongoose'
+import config from './config';
 
 (async () => {
-  await mongoose.connect('mongodb://172.16.132.2/webapp-database');
-  console.log('Database is connect')
-  })()
+  try {
+    const mongooseOptions: ConnectionOptions = {
+      userUnifiedTopology: true,
+      userNewUrlParser: true,
+      //user: config.MONGO_USER,
+      //pass: config.MONGO_PASSWORD
+    }
+    const db = await mongoose.connect('mongodb://${config.MONGO_HOST}/${config.MONGO_DATABASE}');
+    console.log('Database is connected:', db.connection.name)
+  } catch(error) {
+    console.error(error)
+  }
+})()
 
