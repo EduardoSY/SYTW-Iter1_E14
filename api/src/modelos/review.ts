@@ -1,7 +1,7 @@
 import {Schema, model, trusted} from "mongoose";
 import { describe } from "node:test";
 
-const usuarioSchema = new Schema({
+const reviewSchema = new Schema({
   idReview: {
     type: String,
     required: true,
