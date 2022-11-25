@@ -1,6 +1,11 @@
+import dotenv from 'dotenv'
+dotenv.config();
+
+
 export default {
-  MONGO_DATABASE: 'userdb',
-  MONGO_USER: 'admin',
-  MONGO_PASSWORD: 'admin',
-  MONGO_HOST: '172.16.132.2'
+  MONGO_DATABASE: process.env.MONGO_DATABASE || 'webapp_db',
+  MONGO_USER: process.env.MONGO_USER ||'admin',
+  MONGO_PASSWORD: process.env.MONGO_PASSWORD ||'admin',
+  MONGO_HOST: process.env.MONGO_HOST ||'172.16.132.2',
+  PORT: process.env.PORT || 3000
 }
